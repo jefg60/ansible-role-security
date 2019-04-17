@@ -10,7 +10,11 @@ Unattended-Upgrade::MailOnlyOnError "true";
 
 Unattended-Upgrade::Allowed-Origins {
         "${distro_id} ${distro_codename}-security";
+{% if security_autoupdate_allupdates %}
+        "${distro_id} ${distro_codename}-updates";
+{% else %}
 //      "${distro_id} ${distro_codename}-updates";
+{% endif %}
 };
 
 Unattended-Upgrade::Package-Blacklist{
